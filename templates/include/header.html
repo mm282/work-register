@@ -1,0 +1,60 @@
+{% load static %}
+
+
+<!-- Header -->
+<header class="">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><h2>Stand Blog<em>.</em></h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+
+
+                    <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'home:home' %}">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'post:blog' %}">Blog Entries</a>
+                    </li>
+
+                    <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+
+                        <a class="nav-link" href="{% url 'contact:contact' %}">Contact Us</a>
+                    </li>
+
+                    {% if  request.user.is_authenticated %}
+                        <li class="nav-item{% if request.resolver_match.url_name == 'add' %}active{% endif %}">
+                            <a class="nav-link" href="{% url 'post:add' %}">Register Post</a>
+                        </li>
+
+                        <li class="nav-item{% if request.resolver_match.url_name == 'user_detail' %}active{% endif %}">
+                            <a class="nav-link" href="{% url 'login:user_detail' %}">{{ user.username }}</a>
+                        </li>
+                      
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login:logout' %}">logout</a>
+                        </li>
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login:login' %}">login</a>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" href="{% url 'login:register' %}">register</a>
+
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
