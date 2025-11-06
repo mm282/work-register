@@ -38,7 +38,7 @@ def register(request):
         if password2 == password:
 
             User.objects.create_user(username=usernsme, password=password)
-            context["errore"].append('کابر ساخته شد')
+            context["errore"].append('Passwords are not same')
             return redirect("/")
 
 

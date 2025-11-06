@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'aboutus.apps.AboutusConfig',
     'django_social_share',
-    # 'ai.apps.AiConfig'
 ]
 
 MIDDLEWARE = [
